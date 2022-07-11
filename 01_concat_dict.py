@@ -1,82 +1,49 @@
-# concept : 2d list
-
-# Equal-Opportunity-1
-
+# Concept : Dictionaries
+# concat dictionaries
 '''
-  ** Equal Opportunity in each row of a list **
+You will be given three dictionaries, representing three sections -- containing rollnumber and corresponding Names
 
-  _ Imagine for example in a class you have arranged a seating order in which both girls and boys are sitting together. Your task is to now check each row to find which row has equal number of girls and boys. Girls are represented by 0 and Boys are represented by 1 _
+B1 = {"110065001": "Ram", "110065002" : "Lakshman"}
+B2 = {"120065001": "Bharat", "120065002" : "Satrugna"}
+B3 = {"130065001": "Dhasaradh", "130065002" : "Babu"}
 
-  ## Steps
-  1. Write a code for accepting the input of 4 rows and 6 columns
-  2. Go to each row and count the number of 0's and 1's
-  3. If the 1's count and 0's count is equal then print the row there itself.
+Each dictionary representing a particular section.
 
-  ## Representation
+Now if we want to get all the students from the branch CSE, you have to mix all dictionaries and present a single Dictionary with all the roll numbers and students.
 
-1 1 0 0 1 0
+Your task is to combine the given dictionaries into cse_dict and return the cse_dict
 
-0 1 1 1 1 1
-
-0 0 1 1 0 0
-
-0 0 0 1 1 1
-
-### After finding the row number
-
-0
-
-3
-
-## Input
-
-[[1,1,0,0,1,0],[0,1,1,1,1,1],[0,0,1,1,0,0],[0,0,0,1,1,1]]
-
-
-## Output
-
-[0, 3]
-
-NOTE : DO NOT USE count() method
-
+Take a hint to use update() function
 '''
-
 import unittest
 
-def equal_opportunity(lst):
-  equals = []
+def concatinate_dictionaries(d1,d2,d3):
+  cse_dict = {}
   # write your code here
-  for i in lst:
-    a=0
-    b=0
-    for j in i:
-      if(j==1):
-        a=a+1
-      if(j==0):
-        b=b+1
-    if(a==b):
-      equals.append(lst.index(i))
-  return equals
+  cse_dict.update(d1)
+  cse_dict.update(d2)
+  cse_dict.update(d3)
+  return cse_dict
 
 
-class Dict_to_list(unittest.TestCase):
+# DO NOT TOUCH THE BELOW CODE
+
+class Concatination(unittest.TestCase):
   def test_01(self):
-    input = [[1,1,0,0,1,0],[0,1,1,1,1,1],[0,0,1,1,0,0],[0,0,0,1,1,1]]
-    output = [0, 3]
+    B1 = {"110065001": "Ram", "110065002" : "Lakshman"}
+    B2 = {"120065001": "Bharat", "120065002" : "Satrugna"}
+    B3 = {"130065001": "Dhasaradh", "130065002" : "Babu"}
+    output = {"110065001": "Ram", "110065002" : "Lakshman", "120065001": "Bharat", "120065002" : "Satrugna", "130065001": "Dhasaradh", "130065002" : "Babu"}
 
-    self.assertEqual(equal_opportunity(input), output)
+    self.assertEqual(concatinate_dictionaries(B1,B2,B3), output)
 
   def test_02(self):
-    input = [[1,1,1,1,1,1],[0,0,0,1,0,1],[0,0,1,1,0,0],[0,0,0,1,1,1]]
-    output = [3]
+    B1 = {"110065001": "shyam", "110065002" : "sundar"}
+    B2 = {"120065001": "satyam", "120065002" : "sivam"}
+    B3 = {"130065001": "ved", "130065002" : "stalon"}
+    output = {"110065001": "shyam", "110065002" : "sundar", "120065001": "satyam", "120065002" : "sivam", "130065001": "ved", "130065002" : "stalon"}
 
-    self.assertEqual(equal_opportunity(input), output)
-
-  def test_03(self):
-    input = [[1,1],[0,1],[0,0],[1,1]]
-    output = [1]
-
-    self.assertEqual(equal_opportunity(input), output)
+    self.assertEqual(concatinate_dictionaries(B1,B2,B3), output)
 
 if __name__ == '__main__':
   unittest.main(verbosity=2)
