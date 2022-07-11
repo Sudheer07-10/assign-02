@@ -7,7 +7,7 @@ You all have used a calculator. It is quite useful when we have simple and also 
 
 In general calculators
 
-we will give 
+we will give
 25+345
 30-20
 30/4
@@ -26,7 +26,20 @@ import unittest
 
 def calculator(expression):
   ans = 0
+
   # write your code here
+  if '+' in expression:
+    s=expression.split('+')
+    ans=int(s[0])+int(s[1])
+  if '-' in expression:
+    s=expression.split('-')
+    ans=int(s[0])-int(s[1])
+  if '/' in expression:
+    s=expression.split('/')
+    ans=int(s[0])/int(s[1])
+  if '*' in expression:
+    s=expression.split('*')
+    ans=int(s[0])*int(s[1])
 
   return ans
 
